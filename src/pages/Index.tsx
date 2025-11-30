@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
@@ -7,33 +6,20 @@ import { LogOut, User } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
-  const { user, isAuthenticated, logout } = useAuth();
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  if (!isAuthenticated) {
-    return null;
-  }
-
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-[image:var(--gradient-background)] -z-10" />
-      
-      {/* Animated background elements */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
-
-      {/* Header */}
+                  
+                      {/* Header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -55,7 +41,8 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Main content */}
+                     {/* Main content */}
+
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
           <div className="bg-card rounded-2xl shadow-[var(--shadow-elegant)] p-8 backdrop-blur-sm border border-border/50">

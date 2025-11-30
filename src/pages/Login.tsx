@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 import { Loader2 } from "lucide-react";
@@ -14,7 +13,6 @@ import { Loader2 } from "lucide-react";
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  rememberMe: z.boolean().optional(),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
@@ -50,14 +48,11 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-[image:var(--gradient-background)] -z-10" />
       
-      {/* Animated background elements */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      {/* Theme toggle */}
       <div className="absolute top-4 right-4">
         <ThemeToggle />
       </div>
@@ -107,16 +102,6 @@ const Login = () => {
               {errors.password && (
                 <p className="text-sm text-destructive">{errors.password.message}</p>
               )}
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <Checkbox id="rememberMe" {...register("rememberMe")} />
-              <Label
-                htmlFor="rememberMe"
-                className="text-sm font-normal cursor-pointer"
-              >
-                Remember me
-              </Label>
             </div>
 
             <Button
