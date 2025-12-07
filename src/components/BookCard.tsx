@@ -1,13 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import { truncate } from "@/utlis/helperFunctions";
+import { truncate } from "@/utils/helperFunctions";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
 import { Book, Borrowing } from "@/types/library";
+import { useTranslation } from "react-i18next";
+import { useLang } from "@/hooks/useLang";
 
 interface BookCardProps {
-  book: Book;                    
+  book?: Book;                    
   isBorrowedView?: boolean;      
   borrowing?: Borrowing;       
   onBorrow?: () => void;
@@ -25,18 +27,29 @@ export default function BookCard({
   mutationBorrow,
   disableReturn,
 }: BookCardProps) {
+  const { t } = useTranslation();
+  const { lang } = useLang();
+  if (!book) {
+  return (
+    <Card className="animate-pulse p-6">
+      <div className="h-40 bg-muted mb-4"></div>
+      <div className="h-4 bg-muted w-1/2 mb-2"></div>
+      <div className="h-4 bg-muted w-1/3"></div>
+    </Card>
+  );
+}
+
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="bg-muted relative overflow-hidden">
         <img
-          src={book.coverImage}
-          alt={book.title}
+          src={book?.coverImage}
+          alt={book?.title}
           className="w-full h-[160px] object-fill"
         />
       </div>
 
-      <CardContent className="p-4 space-y-3">
-
+      <CardContent className={`p-4 space-y-3 ${lang=='ar'?'text-right':''}`}>
         <div>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -54,14 +67,16 @@ export default function BookCard({
         {/* IF THIS IS MyBooks */}
         {isBorrowedView && borrowing && (
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm">
+            <div className={`flex items-center ${lang=='ar'?'justify-start flex-row-reverse':''} gap-2 text-sm `}>
               <Calendar className="h-4 w-4 text-muted-foreground" />
-              <span className="text-muted-foreground">Borrowed:</span>
+              <span className="text-muted-foreground">{t("borrowed")}</span>
+              <span>:</span>
               <span>{new Date(borrowing.borrowDate).toLocaleDateString()}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm">
+            <div className={`flex items-center gap-2 text-sm ${lang=='ar'?'justify-start flex-row-reverse':''}`}>
               <Calendar className="h-4 w-4 text-muted-foreground" />
-              <span className="text-muted-foreground">Due:</span>
+              <span className="text-muted-foreground">{t("due")}</span>
+              <span>:</span>
               <span
                 className={
                   new Date(borrowing.dueDate) < new Date()
@@ -78,8 +93,14 @@ export default function BookCard({
         {/* If NORMAL BOOK CARD (from Index) */}
         {!isBorrowedView && (
           <div className="space-y-1 text-xs text-muted-foreground">
-            <p>ISBN: {book.isbn}</p>
-            <p>Year: {book.publishedYear}</p>
+            <p>
+              {t("isbn")} : 
+              <span dir="ltr" className="inline-block ml-1">
+                 {book.isbn}
+              </span>
+            </p>
+            <p>{t("year")}: {book.publishedYear}</p>
+
             <Badge variant="outline">{book.category}</Badge>
           </div>
         )}
@@ -94,7 +115,7 @@ export default function BookCard({
               variant={book.isAvailable?'default':'secondary'}
               disabled={mutationBorrow || book.isAvailable==false }
             >
-              {mutationBorrow ? "Borrowing..." : book.isAvailable==false?'Checked Out':"Borrow Book"}
+              {mutationBorrow ?  t("borrowing")  : book.isAvailable==false?t("checked_out"):t("borrow_book")}
             </Button>
           )}
 
@@ -107,7 +128,7 @@ export default function BookCard({
               disabled={disableReturn}
               variant={disableReturn ? "secondary" : "default"}
             >
-              {disableReturn ? "Returned" : "Return Book"}
+              {disableReturn ? t("returned") : t("return_book")}
             </Button>
           )}
         </div>

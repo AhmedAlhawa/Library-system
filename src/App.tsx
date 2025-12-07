@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { useEffect, useState } from "react";
 import ConnectionError from "./components/ConnectionError";
+import { LangProvider } from "./hooks/useLang";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => {
     <Toaster />
     <BrowserRouter>
     <TooltipProvider>
+      <LangProvider>
       <Routes>
         <Route 
           path="/" 
@@ -58,11 +60,14 @@ const App = () => {
             </ProtectedRoute>
           } 
         />
+        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-  </TooltipProvider>  
+      </LangProvider>
+  </TooltipProvider>
+  
     </BrowserRouter>
   </QueryClientProvider>
 )};

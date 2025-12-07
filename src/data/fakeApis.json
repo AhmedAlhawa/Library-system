@@ -11,18 +11,6 @@
       "name": "Jane Smith",
       "email": "jane@example.com",
       "password": "password123"
-    },
-    {
-      "id": "8f43",
-      "name": "ahmad",
-      "email": "ahmad@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "1549",
-      "name": "mohammad",
-      "email": "mohammad@gmail.com",
-      "password": "12345678"
     }
   ],
   "books": [
@@ -81,7 +69,7 @@
       "title": "Harry Potter and the Sorcerer's Stone",
       "author": "J.K. Rowling",
       "isbn": "978-0-439-70818-8",
-      "isAvailable": false,
+      "isAvailable": true,
       "coverImage": "https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?w=300&h=400&fit=crop",
       "publishedYear": 1997,
       "category": "Fantasy"
@@ -227,15 +215,5 @@
       "category": "Science Fiction"
     }
   ],
-  "borrowings": [
-    {
-      "id": "3268",
-      "userId": "8f43",
-      "bookId": "6",
-      "borrowDate": "2025-12-04",
-      "dueDate": "2026-01-03",
-      "returnDate": null,
-      "status": "borrowed"
-    }
-  ]
+  "borrowings": []
 }

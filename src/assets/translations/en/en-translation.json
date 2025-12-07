@@ -1,0 +1,66 @@
+{
+  "invalid_email_address": "Invalid email address",
+  "welcome_back": "Welcome Back",
+  "sign_in_to_continue": "Sign in to your account to continue",
+  "email": "Email",
+  "email_placeholder": "john@example.com",
+  "password": "Password",
+  "password_placeholder": "••••••••",
+  "password_min_length": "Password must be at least 6 characters",
+  "forgot_password": "Forgot password?",
+  "sign_in": "Sign In",
+  "signing_in": "Signing in...",
+  "dont_have_account": "Don't have an account?",
+  "sign_up": "Sign up",
+  "demo_credentials": "Demo credentials: john@example.com / password123",
+
+
+  "name_min_length": "Name must be at least 2 characters",
+  "passwords_dont_match": "Passwords don't match",
+  "create_account": "Create Account",
+  "sign_up_to_get_started": "Sign up to get started",
+  "full_name": "Full Name",
+  "name_placeholder": "John Doe",
+  "confirm_password": "Confirm Password",
+  "confirm_password_placeholder": "••••••••",
+  "creating_account": "Creating account...",
+  "already_have_account": "Already have an account?",
+
+  "home": "Home",
+  "my_books": "My Books",
+  "library_system": "Library System",
+  "logout": "Logout",
+  "welcome": "Welcome",
+
+
+  "search_books": "Search Books",
+  "search_description": "Find and borrow books from our library collection",
+  "search_by": "Search by",
+  
+  "title": "Title",
+  "author": "Author",
+  "isbn": "ISBN",
+  "year": "Year",
+  "category": "Category",
+
+  "search": "Search",
+  "loading_books": "Loading books...",
+  "no_books": "No books found",
+
+  "borrow_book": "Borrow Book",
+  "checked_out": "Checked Out",
+  "borrowing": "Borrowing...",
+  "borrowed": "Borrowed",
+  "due": "Due",
+  "return_book": "Return Book",
+  "returned": "Returned",
+
+
+  "loading_your_books": "Loading your books...",
+  "my_borrowed_books": "My Borrowed Books",
+  "manage_borrowed_description": "Manage your currently borrowed books and return them when done.",
+
+  "no_borrowed_books": "No borrowed books",
+  "no_borrowed_books_description": "You haven't borrowed any books yet. Start exploring the library!"
+
+}
